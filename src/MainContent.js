@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 import './css/MainContent.css';
 import datepickerIcon from './img/datepicker-icon.jpg';
     
@@ -24,6 +26,7 @@ class MainContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      startDate: '12/12',
       locations: [{
         vehicle: 'Renault Trafic',
         start: '22 Sept. 10h45',
@@ -61,7 +64,16 @@ class MainContent extends React.Component {
         receipt: 'http://downloads.bbc.co.uk/schools/500words/500words_online.pdf'
       }]
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
+
+  handleChange(date) {
+    this.setState({
+      startDate: date
+    });
+  }
+
 
   render() {
     return (
@@ -77,7 +89,7 @@ class MainContent extends React.Component {
                     <form id="filters" className="sub-heading-item">
                         <div className="datepicker">
                             <img src={datepickerIcon} width="15" height="15" alt="Datepicker for start date" />
-                            <input type="text" id="start-date" placeholder="dd/mm" />
+                            <DatePicker id="start-date" selected={this.state.date} onChange={this.handleChange} />
                         </div>
                         <div className="datepicker">
                             <img src={datepickerIcon} width="15" height="15" alt="Datepicker for end date" />

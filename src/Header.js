@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './css/Header.css';
 import logo from './img/koolicar-logo.jpg';
 import menuIcon from './img/menu-icon.jpg';
-import MainContent from './MainContent';
 
 class Header extends React.Component {
   constructor () {

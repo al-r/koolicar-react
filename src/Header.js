@@ -5,23 +5,41 @@ import menuIcon from './img/menu-icon.jpg';
 import MainContent from './MainContent';
 
 class Header extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      isNotActive: true
+    }
+  }
+
+  toggleActive () {
+    this.setState({
+      isNotActive: !this.state.isNotActive
+    })
+
+    if(this.state.isNotActive){
+      document.getElementById('nav').className += ' active';
+    } else {
+      document.getElementById('nav').classList.remove('active');
+    }
+  }
 
   render() {
     return (
 			<div id="header" role="header">
-          <div class="container">
-              <div id="logo" class="header-item">
+          <div className="container">
+              <div id="logo" className="header-item">
                   <img src={logo} alt="Koolicar logo" />
               </div>
-              <ul id="nav" class="nomob header-item" role="navigation">
+              <ul id="nav" className="nomob header-item" role="navigation">
                   <li><a href="#">Inscription</a></li>
                   <li><a href="#">Connexion</a></li>
                   <li><a href="#">Aide</a></li>
-                  <li class="button">
+                  <li className="button">
                       <button type="button">Inscrire mon véhicule</button>
                   </li>
               </ul>
-              <img src={menuIcon} id="nav-mob" class="mob" alt="Menu" />
+              <img src={menuIcon} id="nav-mob" className="mob" alt="Menu" onClick={this.toggleActive.bind(this)} />
           </div>
       </div>
     );

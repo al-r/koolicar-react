@@ -26,7 +26,6 @@ class MainContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      startDate: '12/12',
       locations: [{
         vehicle: 'Renault Trafic',
         start: '22 Sept. 10h45',
@@ -65,12 +64,19 @@ class MainContent extends React.Component {
       }]
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeStart = this.handleChangeStart.bind(this);
+    this.handleChangeEnd = this.handleChangeEnd.bind(this);
   }
 
-  handleChange(date) {
+  handleChangeStart(startDate) {
     this.setState({
-      startDate: date
+      startDate: startDate
+    });
+  }
+
+  handleChangeEnd(endDate) {
+    this.setState({
+      endDate: endDate
     });
   }
 
@@ -89,11 +95,11 @@ class MainContent extends React.Component {
                     <form id="filters" className="sub-heading-item">
                         <div className="datepicker">
                             <img src={datepickerIcon} width="15" height="15" alt="Datepicker for start date" />
-                            <DatePicker id="start-date" selected={this.state.date} onChange={this.handleChange} />
+                            <DatePicker id="start-date" placeholderText="dd/mm" minDate={moment()} dateFormat="DD/MM" selected={this.state.startDate} selectsStart startDate={this.state.startDate} endDate={this.state.endDate} onChange={this.handleChangeStart} />
                         </div>
                         <div className="datepicker">
                             <img src={datepickerIcon} width="15" height="15" alt="Datepicker for end date" />
-                            <input type="text" id="end-date" placeholder="dd/mm" />
+                            <DatePicker id="end-date" placeholderText="dd/mm" minDate={this.state.startDate} dateFormat="DD/MM" selected={this.state.endDate} selectsEnd startDate={this.state.startDate} endDate={this.state.endDate} onChange={this.handleChangeEnd} />
                         </div>
                         <button type="submit" className="button-filter">Filtrer</button>
                     </form>

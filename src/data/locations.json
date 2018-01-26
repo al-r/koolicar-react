@@ -1,26 +1,32 @@
 [
     {
         "vehicle": "Renault Trafic",
-        "start": "2018-01-22 10:45",
-        "end": "2018-01-23 12:45",
+        "start": "2019-03-22 10:45",
+        "end": "2019-03-23 12:45",
         "distance": "145km",
-        "length": "15h45",
         "status": "Terminée",
-        "amount": "123,45€",
-        "reduction": "20€",
-        "total": "103,45€",
+        "amount": 123.45,
+        "reduction": 20,
         "receipt": "https://downloads.bbc.co.uk/aboutthebbc/insidethebbc/reports/pdf/bbc_distinctiveness_april2016.pdf"
+    },
+    {
+        "vehicle": "Mini Cooper",
+        "start": "2017-12-12 8:30",
+        "end": "2017-12-12 10:10",
+        "distance": "15km",
+        "status": "Terminée",
+        "amount": 7.32,
+        "reduction": null,
+        "receipt": "http://downloads.bbc.co.uk/schools/500words/500words_online.pdf"
     },
     {
         "vehicle": "Renault Mégane",
         "start": "2017-12-29 11:05",
-        "end": "2017-12-30 23:45",
-        "distance": "200km",
-        "length": "16h05",
+        "end": "2017-12-29 21:45",
+        "distance": "110km",
         "status": "Terminée",
-        "amount": "45,78€",
-        "reduction": null,
-        "total": null,
+        "amount": 145.78,
+        "reduction": 5.78,
         "receipt": "http://downloads.bbc.co.uk/schools/500words/500words_online.pdf"
     },
     {
@@ -28,11 +34,9 @@
         "start": "2017-11-22 7:30",
         "end": "2017-11-23 23:00",
         "distance": "200km",
-        "length": "16h10",
         "status": "Terminée",
-        "amount": "45,56€",
+        "amount": 145.56,
         "reduction": null,
-        "total": null,
         "receipt": "http://downloads.bbc.co.uk/schools/500words/500words_online.pdf"
     },
     {
@@ -40,23 +44,19 @@
         "start": "2017-10-29 11:05",
         "end": "2017-10-30 23:45",
         "distance": "200km",
-        "length": "16h05",
         "status": "Terminée",
-        "amount": "45,78€",
+        "amount": 145.78,
         "reduction": null,
-        "total": null,
         "receipt": "http://downloads.bbc.co.uk/schools/500words/500words_online.pdf"
     },
     {
         "vehicle": "Mini Cooper",
         "start": "2017-10-22 7:30",
-        "end": "2017-10-23 23:00",
-        "distance": "200km",
-        "length": "16h10",
+        "end": "2017-10-22 12:00",
+        "distance": "41km",
         "status": "Terminée",
-        "amount": "45,56€",
+        "amount": 18,
         "reduction": null,
-        "total": null,
         "receipt": "http://downloads.bbc.co.uk/schools/500words/500words_online.pdf"
     },
     {
@@ -64,11 +64,9 @@
         "start": "2017-09-29 11:05",
         "end": "2017-09-30 23:45",
         "distance": "200km",
-        "length": "16h05",
         "status": "Terminée",
-        "amount": "45,78€",
+        "amount": 145.78,
         "reduction": null,
-        "total": null,
         "receipt": "http://downloads.bbc.co.uk/schools/500words/500words_online.pdf"
     },
     {
@@ -76,11 +74,9 @@
         "start": "2017-09-22 7:30",
         "end": "2017-09-23 23:00",
         "distance": "200km",
-        "length": "16h10",
         "status": "Terminée",
-        "amount": "45,56€",
+        "amount": 145.56,
         "reduction": null,
-        "total": null,
         "receipt": "http://downloads.bbc.co.uk/schools/500words/500words_online.pdf"
     }
 ]

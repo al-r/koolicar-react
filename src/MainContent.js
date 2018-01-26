@@ -101,11 +101,11 @@ class MainContent extends React.Component {
                     <form id="filters" className="sub-heading-item">
                         <div className="datepicker">
                             <img src={datepickerIcon} width="15" height="15" alt="Datepicker for start date" />
-                            <DatePicker id="start-date" placeholderText="dd/mm" dateFormat="DD/MM" selected={this.state.startDate} selectsStart startDate={this.state.startDate} endDate={this.state.endDate} onChange={this.handleChangeStart} />
+                            <DatePicker id="start-date" placeholderText="jj/mm" dateFormat="DD/MM" selected={this.state.startDate} selectsStart startDate={this.state.startDate} endDate={this.state.endDate} onChange={this.handleChangeStart} />
                         </div>
                         <div className="datepicker">
                             <img src={datepickerIcon} width="15" height="15" alt="Datepicker for end date" />
-                            <DatePicker id="end-date" placeholderText="dd/mm" minDate={this.state.startDate} dateFormat="DD/MM" selected={this.state.endDate} selectsEnd startDate={this.state.startDate} endDate={this.state.endDate} onChange={this.handleChangeEnd} />
+                            <DatePicker id="end-date" placeholderText="jj/mm" minDate={this.state.startDate} dateFormat="DD/MM" selected={this.state.endDate} selectsEnd startDate={this.state.startDate} endDate={this.state.endDate} onChange={this.handleChangeEnd} />
                         </div>
                         <button type="button" className="button-filter" onClick={this.resetDateFilter}>Réinitialiser</button>
                     </form>

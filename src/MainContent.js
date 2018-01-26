@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import DatePicker from 'react-datepicker';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
+import Locations from './data/locations.json';
 import './css/MainContent.css';
 import datepickerIcon from './img/datepicker-icon.jpg';
  
@@ -29,42 +30,7 @@ class MainContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      locations: [{
-        vehicle: 'Renault Trafic',
-        start: '2018-01-22 10:45',
-        end: '2018-01-23 12:45',
-        distance: '145km',
-        length: '15h45',
-        status: 'Terminée',
-        amount: '123,45€',
-        reduction: '20€',
-        total: '103,45€',
-        receipt: 'https://downloads.bbc.co.uk/aboutthebbc/insidethebbc/reports/pdf/bbc_distinctiveness_april2016.pdf'
-      },
-      {
-        vehicle: 'Renault Mégane',
-        start: '2017-09-29 11:05',
-        end: '2017-09-30 23:45',
-        distance: '200km',
-        length: '16h05',
-        status: 'Terminée',
-        amount: '45,78€',
-        reduction: null,
-        total: null,
-        receipt: 'http://downloads.bbc.co.uk/schools/500words/500words_online.pdf'
-      },
-      {
-        vehicle: 'Mini Cooper',
-        start: '2017-09-22 7:30',
-        end: '2017-09-23 23:00',
-        distance: '200km',
-        length: '16h10',
-        status: 'Terminée',
-        amount: '45,56€',
-        reduction: null,
-        total: null,
-        receipt: 'http://downloads.bbc.co.uk/schools/500words/500words_online.pdf'
-      }]
+      locations: Locations
     };
 
     this.handleChangeStart = this.handleChangeStart.bind(this);

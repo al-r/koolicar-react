@@ -145,6 +145,7 @@ class MainContent extends React.Component {
                               {moment(item.end).format('DD MMM YYYY HH:mm')}
                           </div>
                           <div className="list-item-col">
+                              <h3>Distance : </h3>
                               {item.distance}
                           </div>
                           <div className="list-item-col">

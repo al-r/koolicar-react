@@ -11,15 +11,7 @@ const moment = extendMoment(Moment);
     
 function Reduction(props) {
   if(props.reduction!=null) {
-    return <span className="montant"><h3 className="text-green">Réduction : </h3>{props.reduction}</span>;
-  } else {
-    return '';
-  }
-}
-    
-function Total(props) {
-  if(props.total!=null) {
-    return <span className="montant"><h3 className="text-pink">Total : </h3>{props.total}</span>;
+    return <span><span className="montant"><h3 className="text-green">Réduction : </h3>{props.reduction}€</span><span className="montant"><h3 className="text-pink">Total : </h3>{props.amount - props.reduction}€</span></span>;
   } else {
     return '';
   }
@@ -161,14 +153,13 @@ class MainContent extends React.Component {
                           </div>
                           <div className="list-item-col">
                               <h3>Statut : </h3>
-                              {item.status}
+                              {moment(item.end) < moment() ? 'Terminée' : 'A venir'}
                               <span className="nomob text-green" style={{display: item.reduction==null ? 'none' : 'block'}}>Réduction</span>
-                              <span className="nomob text-pink" style={{display: item.total==null ? 'none' : 'block'}}>Total</span>
+                              <span className="nomob text-pink" style={{display: item.reduction==null ? 'none' : 'block'}}>Total</span>
                           </div>
                           <div className="list-item-col">
-                              <span className="montant"><h3>Montant : </h3>{item.amount}</span>
-                              <Reduction reduction={item.reduction} />
-                              <Total total={item.total} />
+                              <span className="montant"><h3>Montant : </h3>{item.amount}€</span>
+                              <Reduction reduction={item.reduction} amount={item.amount} />
                           </div>
                           <div className="list-item-col">
                               <a href="{item.receipt}" download>Télécharger<span className="mob"> un reçu</span></a>

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import DatePicker from 'react-datepicker';
-import moment from 'moment';
+import Moment from 'moment';
+import { extendMoment } from 'moment-range';
 import './css/MainContent.css';
 import datepickerIcon from './img/datepicker-icon.jpg';
+ 
+const moment = extendMoment(Moment);
     
 function Reduction(props) {
   if(props.reduction!=null) {
@@ -28,8 +31,8 @@ class MainContent extends React.Component {
     this.state = {
       locations: [{
         vehicle: 'Renault Trafic',
-        start: '22 Sept. 10h45',
-        end: '23 Sept. 12h45',
+        start: '2018-01-22 10:45',
+        end: '2018-01-23 12:45',
         distance: '145km',
         length: '15h45',
         status: 'Terminée',
@@ -40,10 +43,10 @@ class MainContent extends React.Component {
       },
       {
         vehicle: 'Renault Mégane',
-        start: '12 Juil. 23h45',
-        end: '13 Sept. 11h05',
+        start: '2017-09-29 11:05',
+        end: '2017-09-30 23:45',
         distance: '200km',
-        length: '6h05',
+        length: '16h05',
         status: 'Terminée',
         amount: '45,78€',
         reduction: null,
@@ -52,10 +55,10 @@ class MainContent extends React.Component {
       },
       {
         vehicle: 'Mini Cooper',
-        start: '06 Juil. 7h30',
-        end: '06 Juil. 23h00',
-        distance: '145km',
-        length: '6h10',
+        start: '2017-09-22 7:30',
+        end: '2017-09-23 23:00',
+        distance: '200km',
+        length: '16h10',
         status: 'Terminée',
         amount: '45,56€',
         reduction: null,
@@ -80,6 +83,37 @@ class MainContent extends React.Component {
     });
   }
 
+  filterByDate(startDate, endDate, data) {
+    var range = moment.range(startDate, endDate);
+    var selectedRental = [];
+
+    if(startDate && endDate) {
+      for(var i=0;i<data.length;i++){
+        if(range.contains(moment(data[i].start)) && range.contains(moment(data[i].end))){
+          selectedRental.push(data[i]);
+        }
+      }
+    } else if(startDate || endDate) {
+      if(startDate) {
+        for(var i=0;i<data.length;i++){
+          if((moment(data[i].start) > moment(startDate)) || (moment(data[i].end) > moment(startDate))){
+            selectedRental.push(data[i]);
+          }
+        }
+      } else if(endDate) {
+        for(var i=0;i<data.length;i++){
+          if((moment(data[i].start) < moment(endDate)) || (moment(data[i].end) < moment(endDate))){
+            selectedRental.push(data[i]);
+          }
+        }
+      }
+    } else {
+      selectedRental = data;
+    }
+
+    return selectedRental;
+  }
+
 
   render() {
     return (
@@ -95,13 +129,13 @@ class MainContent extends React.Component {
                     <form id="filters" className="sub-heading-item">
                         <div className="datepicker">
                             <img src={datepickerIcon} width="15" height="15" alt="Datepicker for start date" />
-                            <DatePicker id="start-date" placeholderText="dd/mm" minDate={moment()} dateFormat="DD/MM" selected={this.state.startDate} selectsStart startDate={this.state.startDate} endDate={this.state.endDate} onChange={this.handleChangeStart} />
+                            <DatePicker id="start-date" placeholderText="dd/mm" dateFormat="DD/MM" selected={this.state.startDate} selectsStart startDate={this.state.startDate} endDate={this.state.endDate} onChange={this.handleChangeStart} />
                         </div>
                         <div className="datepicker">
                             <img src={datepickerIcon} width="15" height="15" alt="Datepicker for end date" />
                             <DatePicker id="end-date" placeholderText="dd/mm" minDate={this.state.startDate} dateFormat="DD/MM" selected={this.state.endDate} selectsEnd startDate={this.state.startDate} endDate={this.state.endDate} onChange={this.handleChangeEnd} />
                         </div>
-                        <button type="submit" className="button-filter">Filtrer</button>
+                        <button type="button" className="button-filter">Filtrer</button>
                     </form>
                 </div>
 
@@ -133,18 +167,18 @@ class MainContent extends React.Component {
                         </div>
                     </li>
 
-                    {this.state.locations.map(item => (
+                    {this.filterByDate(this.state.startDate, this.state.endDate, this.state.locations).map(item => (
                       <li className="list-item">
                           <h3 className="list-item-col">
                               {item.vehicle}
                           </h3>
                           <div className="list-item-col">
                               <h3>Début : </h3>
-                              {item.start}
+                              {moment(item.start).format('DD MMM. YYYY HH:mm')}
                           </div>
                           <div className="list-item-col">
                               <h3>Fin : </h3>
-                              {item.end}
+                              {moment(item.end).format('DD MMM. YYYY HH:mm')}
                           </div>
                           <div className="list-item-col">
                               {item.distance}

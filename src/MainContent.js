@@ -69,6 +69,7 @@ class MainContent extends React.Component {
 
     this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
+    this.resetDateFilter = this.resetDateFilter.bind(this);
   }
 
   handleChangeStart(startDate) {
@@ -114,6 +115,11 @@ class MainContent extends React.Component {
     return selectedRental;
   }
 
+  resetDateFilter() {
+    this.handleChangeStart(undefined);
+    this.handleChangeEnd(undefined);
+  }
+
 
   render() {
     return (
@@ -135,7 +141,7 @@ class MainContent extends React.Component {
                             <img src={datepickerIcon} width="15" height="15" alt="Datepicker for end date" />
                             <DatePicker id="end-date" placeholderText="dd/mm" minDate={this.state.startDate} dateFormat="DD/MM" selected={this.state.endDate} selectsEnd startDate={this.state.startDate} endDate={this.state.endDate} onChange={this.handleChangeEnd} />
                         </div>
-                        <button type="button" className="button-filter">Filtrer</button>
+                        <button type="button" className="button-filter" onClick={this.resetDateFilter}>Clear Filters</button>
                     </form>
                 </div>
 

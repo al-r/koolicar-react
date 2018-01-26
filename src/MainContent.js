@@ -56,7 +56,7 @@ class MainContent extends React.Component {
 
     if(startDate && endDate) {
       for(var i=0;i<data.length;i++){
-        if(range.contains(moment(data[i].start)) && range.contains(moment(data[i].end))){
+        if(range.contains(moment(data[i].start)) || range.contains(moment(data[i].end))){
           selectedRental.push(data[i]);
         }
       }
@@ -107,7 +107,7 @@ class MainContent extends React.Component {
                             <img src={datepickerIcon} width="15" height="15" alt="Datepicker for end date" />
                             <DatePicker id="end-date" placeholderText="dd/mm" minDate={this.state.startDate} dateFormat="DD/MM" selected={this.state.endDate} selectsEnd startDate={this.state.startDate} endDate={this.state.endDate} onChange={this.handleChangeEnd} />
                         </div>
-                        <button type="button" className="button-filter" onClick={this.resetDateFilter}>Clear Filters</button>
+                        <button type="button" className="button-filter" onClick={this.resetDateFilter}>Réinitialiser</button>
                     </form>
                 </div>
 
@@ -146,18 +146,18 @@ class MainContent extends React.Component {
                           </h3>
                           <div className="list-item-col">
                               <h3>Début : </h3>
-                              {moment(item.start).format('DD MMM. YYYY HH:mm')}
+                              {moment(item.start).format('DD MMM YYYY HH:mm')}
                           </div>
                           <div className="list-item-col">
                               <h3>Fin : </h3>
-                              {moment(item.end).format('DD MMM. YYYY HH:mm')}
+                              {moment(item.end).format('DD MMM YYYY HH:mm')}
                           </div>
                           <div className="list-item-col">
                               {item.distance}
                           </div>
                           <div className="list-item-col">
                               <h3>Durée : </h3>
-                              {item.length}
+                              {moment(item.start).to(item.end, true)}
                           </div>
                           <div className="list-item-col">
                               <h3>Statut : </h3>

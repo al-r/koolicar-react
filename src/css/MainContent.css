@@ -309,7 +309,7 @@ ul {
 	.sub-heading-item a,
 	#filters,
 	#filters button,
-	#filters div {
+	#filters > div {
 		display: block;
 		width: 100%;
 	}
